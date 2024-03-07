@@ -148,6 +148,8 @@ Definición formal:
 
 MT = { Q, Ʃ, δ, q0, qA, qR }
 
+Ʃ = { a, b, a', b', B }
+
 Q = { q0, qa, qb, qr, qn, qA, qR }
 * q0: estado inicial.
 * qa: desplazándose hacia el final de la cadena buscando el último símbolo "a".
@@ -163,10 +165,10 @@ Q = { q0, qa, qb, qr, qn, qA, qR }
 | q0 | qa, a', R | qb, b', R |
 | qa | qa, a, R | qa, b, R | qra, a', L | qra, b', L | qra, B, L |
 | qb | qb, a, R | qb, b, R | qrb, a', L | qrb, b', L | qrb, B, L |
-| qra | qr, a', L | qra, b, L | qR, a', S | qR, b', S |
-| qrb | qrb, a, L | qr, b', L | qR, a', S | qR, b', S |
+| qra | qr, a', L | qR, b, S | qA, a', S | qA, b', S |
+| qrb | qR, a, S | qr, b', L | qA, a', S | qA, b', S |
 | qr | qr, a, L | qr, b, L | qt, a', R | qt, b', R |
-| qt | qa, a', R | qb, b', R | qA, a', S | qA, b', S |
+| qt | qa, a', R | qb, b', R | | | qA, B, S |
 
 # 7. Construir una MT que calcule la resta de dos números (se puede considerar la idea de solución propuesta en clase).
 
