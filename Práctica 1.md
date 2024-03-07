@@ -168,8 +168,37 @@ Q = { q0, qa, qb, qr, qn, qA, qR }
 | qra | qr, a', L | qR, b, S | qA, a', S | qA, b', S |
 | qrb | qR, a, S | qr, b', L | qA, a', S | qA, b', S |
 | qr | qr, a, L | qr, b, L | qt, a', R | qt, b', R |
-| qt | qa, a', R | qb, b', R | | | qA, B, S |
+| qt | qa, a', R | qb, b', R | qA, a', S | qB, b', S | qA, B, S |
 
 # 7. Construir una MT que calcule la resta de dos números (se puede considerar la idea de solución propuesta en clase).
+
+Idea general:
+
+Suponiendo los números en sistema unario, copiar el primer término en una segunda cinta e ir eliminando los símbolos del segundo término para obtener el resultado de la resta.
+
+1. Copiar los símbolos en una segunda cinta hasta llegar al caracter de resta.
+2. Cambiar los símbolos de la cinta 2 por espacios en blanco hasta que no haya símbolos en la cinta 1.
+
+M = { Q, Ʃ, δ, q0, qA, qR }
+
+Ʃ = { 0, 1, B }
+
+Q = { q0, qe, qr, qA, qR }
+
+* q0: estado inicial
+* qe: copiando los símbolos del primer término en la cinta 2.
+* qr: eliminando símbolos de la cinta 2 para obtener el resultado.
+
+Funciones de transición:
+* `δ(q0(1,B))`: qe(1,1), (R,R)
+* `δ(qe(1,B))`: qe(1,1), (R,R)
+* `δ(qe(0,B))`: qr(0,B), (R,L)
+* `δ(qr(1,1))`: qr(1,B), (R,L)
+* `δ(qr(B,1))`: qA(B,1), (S,S)
+* `δ(qr(B,B))`: qA(B,B), (S,S)
+
+El resultado quedaría en la cinta 2.
+
+*// CONSULTAR: esto sólo acepta restas positivas y en las que el término 1 >= término 2*
 
 # 8. Construir una MT que genere todas las cadenas de la forma a<sup>n</sup>b<sup>n</sup>, con n ≥ 1 (se puede considerar la idea de solución propuesta en clase).
