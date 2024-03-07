@@ -78,6 +78,8 @@ Idea general:
     1. Si encuentra un espacio en blanco en cualquiera de las 2 cintas mientras hay un símbolo en la otra, rechaza la entrada.
 1. Si ambos cabezales terminaron en un espacio en blanco, se acepta la entrada.
 
+Definición formal:
+
 M = { Q, Ʃ, δ, q0, qA, qR }
 
 Ʃ = { a, b, c, B }
@@ -88,17 +90,83 @@ Q = { q0, qa, qb, qc, qA, qR }
 * qb: copiando símbolos "b".
 * qc: copiando símbolos "c".
 
+
 1. `δ(q0, (a,B)): qa, (a,R), (a,R)`: si valida que haya una "a" en la primera posición, comienza a escribir en la cinta 2.
-1. `δ(qa, (a,B)): qa, (a,R), (a,R)`: mientras haya "a" en la cinta 1 y espacios en blanco en la cinta 2, continúa escribiendo.
-1. `δ(qa, (b,B)): qb, (b,R), (B,L)`: una vez que encuentra una "b" en la cinta 1 y se asegura que no haya "a" en la cinta 2, apunta el cabezal en la primer "b" de la cinta 1 y se desplaza a la izquierda en la cinta 2 para comenzar a sobrescribir las "a".
-1. `δ(qb, (b,a)): qb, (b,R), (b,L)`: mientras haya "b" en la cinta 1 y "a" en la cinta 2, continúa sobrescribiéndolas.
-1. `δ(qb, (c,B)): qc, (c,R), (B,R)`: una vez que encuentra una "c" en la cinta 1 y se asegura que no haya "b" en la cinta 2, apunta el cabezal en la primer "c" de la cinta 1 y se desplaza a la derecha en la cinta 2 para comenzar a sobrescribir las "b".
-1. `δ(qc, (c,b)): qc(c,R), (c,R)`: mientras haya "c" en la cinta 1 y "b" en la cinta 2, continúa sobrescribiéndolas.
-1. `δ(qc, (B,B)): qA(B,S), (B,S)`: si luego de terminar de copiar las "c" ambas cintas están en su espacio en blanco, significa que había tanta cantidad de "a" como de "b" y "c".
+2. `δ(qa, (a,B)): qa, (a,R), (a,R)`: mientras haya "a" en la cinta 1 y espacios en blanco en la cinta 2, continúa escribiendo.
+3. `δ(qa, (b,B)): qb, (b,R), (B,L)`: una vez que encuentra una "b" en la cinta 1 y se asegura que no haya "a" en la cinta 2, apunta el cabezal en la primer "b" de la cinta 1 y se desplaza a la izquierda en la cinta 2 para comenzar a sobrescribir las "a".
+4. `δ(qb, (b,a)): qb, (b,R), (b,L)`: mientras haya "b" en la cinta 1 y "a" en la cinta 2, continúa sobrescribiéndolas.
+5. `δ(qb, (c,B)): qc, (c,R), (B,R)`: una vez que encuentra una "c" en la cinta 1 y se asegura que no haya "b" en la cinta 2, apunta el cabezal en la primer "c" de la cinta 1 y se desplaza a la derecha en la cinta 2 para comenzar a sobrescribir las "b".
+6. `δ(qc, (c,b)): qc(c,R), (c,R)`: mientras haya "c" en la cinta 1 y "b" en la cinta 2, continúa sobrescribiéndolas.
+7. `δ(qc, (B,B)): qA(B,S), (B,S)`: si luego de terminar de copiar las "c" ambas cintas están en su espacio en blanco, significa que había tanta cantidad de "a" como de "b" y "c".
+
+*// CONSULTAR: cuando encuentro el siguiente símbolo en la cinta 1 (como en los puntos 3 o 5) debería desplazarme en la cinta 1 o dejarla en S? CREO que si me muevo queda en una posición más que la cinta 2*
 
 # 5. Describir cómo simular una MT (la idea general) por otra que no tenga el movimiento S (es decir el no movimiento).
 
+Idea general:
+
+Crear una MT que, al llegar a cierto símbolo, simule detenerse moviéndose entre las mismas 2 celdas indefinidamente.
+
+1. La MT en estado *qa* encuentra un símbolo *a* en la posición *k*, indicando que debe detenerse.
+2. Cambia al estado *qs* y se desplaza hacia la derecha sin modificar el símbolo.
+3. Una vez en la posición *k + 1*, cambia al estado *qb* y se desplaza a la izquierda.
+
+Definición formal:
+
+MT = { Q, Ʃ, δ, q0, qA, qR }
+
+Ʃ = { a, b, B }
+
+Q = { q0, qa, qb, qs, qA, qR }
+* q0: estado inicial.
+* qa: buscando un símbolo "a".
+* qb: buscando un símbolo "b".
+* qs: no desplazarse.
+
+Funciones de transición:
+1. `δ(q0, a)`: (qa, a, R)
+2. `δ(qa, a)`: (qs, a, R)
+3. `δ(qs, b)`: (qb, b, L)
+3. `δ(qs, B)`: (qb, B, L)
+
+*// CONSULTAR: hacer esto hace que se detenga sólo una vez, pero si cambio el resultado de la FT 3 por (qa, b, L) se terminaría deteniendo indefinidamente. No sé si hay alguna manera de detenerla por ciertos movimientos.*
+
 # 6. En clase se construyó una MT con 2 cintas para aceptar L = {w | w ∈ {a, b}* y w es un palíndromo o "capicúa"}. Construir una MT con una cinta para aceptar L (la solución que vimos para aceptar el lenguaje de las cadenas a<sup>n</sup>b<sup>n</sup>, con n ≥ 1, puede ser un buen punto de partida).
+
+Idea general:
+
+Crear una MT con una cinta que acepte las cadenas en las que, dado un símbolo "a", del otro lado de la cadena haya otro igual.
+
+1. Marca el primer símbolo de la cadena y cambia a un estado para buscar uno igual del otro lado.
+2. Va a buscar el último símbolo de la cadena y lo compara con el primero.
+    1. Si son iguales, lo marca y vuelve al principio para comparar el segundo símbolo.
+    2. Si son distintos, rechaza la entrada.
+3. Si volvió al inicio de la cadena, vuelve a realizar este ciclo con el resto de caracteres.
+4. Acepta la entrada si todos los caracteres están marcados.
+
+Definición formal:
+
+MT = { Q, Ʃ, δ, q0, qA, qR }
+
+Q = { q0, qa, qb, qr, qn, qA, qR }
+* q0: estado inicial.
+* qa: desplazándose hacia el final de la cadena buscando el último símbolo "a".
+* qb: desplazándose hacia el final de la cadena buscando el último símbolo "b".
+* qra: volviendo desde el final para marcar el último símbolo "a".
+* qrb: volviendo desde el final para marcar el último símbolo "b".
+* qr: volviendo a buscar el primer símbolo sin marcar de la cadena.
+* qt: debe obtener el primer símbolo sin marcar.
+
+
+|    | a | b | a' | b' | B |
+| -- | - | - | -- | -- | - |
+| q0 | qa, a', R | qb, b', R |
+| qa | qa, a, R | qa, b, R | qra, a', L | qra, b', L | qra, B, L |
+| qb | qb, a, R | qb, b, R | qrb, a', L | qrb, b', L | qrb, B, L |
+| qra | qr, a', L | qra, b, L | qR, a', S | qR, b', S |
+| qrb | qrb, a, L | qr, b', L | qR, a', S | qR, b', S |
+| qr | qr, a, L | qr, b, L | qt, a', R | qt, b', R |
+| qt | qa, a', R | qb, b', R | qA, a', S | qA, b', S |
 
 # 7. Construir una MT que calcule la resta de dos números (se puede considerar la idea de solución propuesta en clase).
 
