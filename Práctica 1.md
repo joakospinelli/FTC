@@ -202,3 +202,29 @@ El resultado quedaría en la cinta 2.
 *// CONSULTAR: esto sólo acepta restas positivas y en las que el término 1 >= término 2*
 
 # 8. Construir una MT que genere todas las cadenas de la forma a<sup>n</sup>b<sup>n</sup>, con n ≥ 1 (se puede considerar la idea de solución propuesta en clase).
+
+Para este enunciado habría que construir una MT generadora, la cual no tendría fin: estaría en un bucle generando cadenas en una cinta, separando cada una por un delimitador.
+
+Idea general:
+1. Usar una cinta como contador: escribir un símbolo especial en cada vuelta.
+2. Escribir los n símbolos "a" en otra cinta hasta que la cinta 1 llegue al espacio en blanco del extremo derecho
+3. Escribir los n símbolos "b" en otra cinta hasta que la cinta 1 llegua al espacio en blanco del extremo izquierdo.
+4. Aumentar el contador de la cinta contadora y poner un delimitador en la cinta escritora.
+
+Definición formal:
+
+M = { Q, Ʃ, δ, q0, qA, qR }
+
+Ʃ = { a, b, B, #, 1 }
+
+Q = { q0, qa, qb, qA, qR }
+* q0: estado inicial.
+* qa: escribiendo símbolos "a".
+* qb: escribiendo símbolos "b".
+
+Funciones de transición:
+* `δ(q0, (B,B))`: qa (B,S), (1,S)
+* `δ(qa, (B,1))`: qa (a,R), (1,R)
+* `δ(qa, (B,B))`: qb(B,S), (B,L)
+* `δ(qb, (B,1))`: qb(b,R), (1,L)
+* `δ(qb, (B,B))`: qa(#,R), (1,S)
