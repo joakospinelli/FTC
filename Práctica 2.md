@@ -81,7 +81,7 @@ Función de transición:
 
 M = { Q ,Ʃ, δ, q0, qA, qR }
 
-Ʃ = L1 ∪ B
+Ʃ = L2 ∪ B
 
 Q = { q0, qb, qA, qR }
 * q0: estado inicial.
@@ -100,10 +100,65 @@ Función de transición:
 # 3. Probar:
 ## a. La clase R es cerrada con respecto a la operación de unión.
 
+Demostrar que L1 ∪ L2 ∈ R. Se suponen dos MT M1 y M2 que aceptan L1 y L2 respectivamente, dentro de una MT M que las ejecuta secuencialmente.
+
+Al tratarse de una unión, con que sólo una de M1 o M2 acepte la entrada ya podemos suponer que forma parte del lenguaje L1 ∪ L2 (no es necesaria la verificación en ambas como en la intersección). Como ambos conjuntos ∈ R, por definición se sabe que su unión también.
+
+Idea general:
+1. Copiar la entrada en una segunda cinta.
+2. La M1 itera sobre los elementos de la cinta.
+    1. Si todos los símbolos ∈ L1, pasa al estado `qA1`.
+    2. Si encuentra un elemento que no, pasa al estado `qR1`.
+3. Una vez que terminó la ejecución de M1, pueden ocurrir dos casos según el estado con el que finalice:
+    1. Si aceptó la entrada, se puede confirmar que la entrada pertenece a L1 ∪ L2.
+    2. Si rechazó la entrada, se debe ejecutar M2 para saber si la entrada ∈ L2.
+4. Al terminar de ejecutar M1 y M2, si al menos una de las 2 MT aceptó la entrada, se puede concluir que L1 ∪ L2 ∈ R.
+
+M = { Q<sub>M</sub>, Ʃ<sub>M</sub>, δ<sub>M</sub>, q0, qA<sub>M</sub>, qR<sub>M</sub> }
+
+M1 = { Q<sub>M1</sub>, Ʃ<sub>M1</sub>, δ<sub>M1</sub>, q0, qA<sub>M1</sub>, qR<sub>M1</sub> }
+
+M2 = { Q<sub>M2</sub>, Ʃ<sub>M2</sub>, δ<sub>M2</sub>, q0, qA<sub>M2</sub>, qR<sub>M2</sub> }
+
+Ʃ<sub>M</sub> = Ʃ<sub>M1</sub> ∪ Ʃ<sub>M2</sub>
+
+Q<sub>M</sub> = Q<sub>M1</sub> ∪ Q<sub>M2</sub> ∪ { q0, qc, qr, qa<sub>Mi</sub>, qw, qA, qR }
+* q0: estado inicial
+* qc: copiando en cinta 2.
+* qr: vuelve al inicio de la fila.
+* qa<sub>Mi</sub>: la MT Mi revisa la cinta.
+
+Funciones de transición:
+* q0(x,B): qc(x,S), (B,S)
+* qc(x,B): qc(x,R), (x,R)
+* qc(B,B): q0<sub>M1</sub> (B,R), (B,R)
+* q0<sub>M1</sub>(x,x): qa<sub>M1</sub>(x,R), (x,R) *// para todo "x" ∈ Ʃ<sub>M1</sub>*
+* qa<sub>M1</sub>(B,B): qA<sub>M1</sub>(B,S), (B,S)
+* qA<sub>M1</sub>(B,B): qA(B,S), (B,S)
+* qR<sub>M1</sub>(B,B): q0<sub>M2</sub>(B,S), (B,S)
+* qA<sub>M2</sub>(B,B): qA(B,S), (B,S)
+* qR<sub>M2</sub>(B,B): qR (B,S), (B,S)
+
 ## b. La clase RE es cerrada con respecto a la operación de intersección. 
 
-# 4. Sean L1 y L2 dos lenguajes recursivamente numerables de números naturales codificados en unario (por ejemplo, el número 5 se representa con 11111). Probar que también es recursivamente numerable el lenguaje L = {x | x es un número natural codificado en unario, y existen y, z, tales que y + z = x, con y ∈ L1, z ∈ L2}. Ayuda: la prueba es similar a la vista en clase, de la propiedad de clausura de la clase RE con respecto a la operación de concatenación.
+Demostrar que L1 ⋂ L2 ∈ RE. Se suponen dos MT M1 y M2 que aceptan L1 y L2 respectivamente, dentro de una MT M que las ejecuta secuencialmente.
 
+A diferencia del conjunto recursivo, con los lenguajes ∈ RE no se puede garantizar que las MT que los aceptan finalicen correctamente; con que una de las dos permanezca en bucle, M también lo hará.
+
+Además, al tratarse de una intersección, la entrada debe pasar por las dos MT para poder ser aceptada. 
+
+# 4. Sean L1 y L2 dos lenguajes recursivamente numerables de números naturales codificados en unario (por ejemplo, el número 5 se representa con 11111). Probar que también es recursivamente numerable el lenguaje L = {x | x es un número natural codificado en unario, y existen y, z, tales que y + z = x, con y ∈ L1, z ∈ L2}
+
+* L1 ∈ RE
+* L2 ∈ RE
+* L(M1) = L1
+* L(M2) = L2
+* L = L1 * L2
+* Demostrar que L ∈ RE
+
+Como L1 y L2 son números escritos en lenguaje unario, la suma de dos números sería lo mismo que la concatenación de símbolos 1. Se busca construir una máquina M que compruebe que L ∈ RE.
+
+Al tratarse de lenguajes de RE, no se puede garantizar la finalización de L1 o L2; por lo tanto, tampoco se puede confirmar para L. Debido a esto la comprobación debe realizarse ejecutando M1 y M2 concurrentemente.
 
 # 5. Dada una MT M1 con alfabeto Ʃ = {0, 1}:
 ## a. Construir una MT M2 que determine si L(M1) tiene al menos una cadena.
