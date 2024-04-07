@@ -80,17 +80,17 @@ Racionales:
     * Si había un "1" o un espacio en blanco, escribir un "0".
 5. Volver al paso 2
 
-# 4. Una función f : A ⟶ B se dice que es total computable, si existe una MT M<sub>f</sub> que computa f para todo elemento a  A. Sea la función fHP: Ʃ* ⟶ {0, 1}, tal que:
+# 4. Una función f : A ⟶ B se dice que es total computable, si existe una MT M<sub>f</sub> que computa f para todo elemento a ∈ A. Sea la función fHP: Ʃ* ⟶ {0, 1}, tal que:
 ### fHP (x) = 1, si x = (< M >, w) y M para a partir de w.
 ### fHP (x) = 0, si x = (< M >, w) y M no para a partir de w, o bien x ≠ (< M >, w).
 
 ## Probar que la función fHP no es total computable.
 
-fHP supone una MT<sub>f</sub> que siempre finaliza, escribiendo un resultado en su cinta de salida. Debido a esto, podemos suponer que L(fHP) ∈ R.
+fHP supone una MT<sub>f</sub> que siempre finaliza, por lo que podemos suponer que L(fHP) ∈ R.
 
-Por definición, fHP debe retornar un valor "0" en el caso de que la MT < M > rechace la entrada `w` o no finalice a partir de ella.
+Por definición, fHP debe retornar un valor "0" (qR) en el caso de que la MT < M > rechace la entrada `w` o no finalice a partir de ella.
 
-Dado esto, encontramos una incongruencia en la que fHP debe retornar un resultado, incluso en el caso de que no finalice. Por lo tanto, MT<sub>f</sub> entraría en un bucle.
+Dado esto, encontramos una inconsistencia en la que fHP debe retornar un resultado, incluso en el caso de que no finalice. Por lo tanto, MT<sub>f</sub> entraría en un bucle.
 
 Por lo tanto, como no podemos asegurar la finalización de MT<sub>f</sub> para todas sus entradas, concluimos que L(fHP) ∈ RE y entonces fHP no es total comptable.
 
@@ -108,6 +108,4 @@ Por lo tanto, MT<sub>f</sub> pertenecería a RE y fHP no sería total computable
 ## a. Si L1 ∈ RE y L2 ∈ RE, ¿L1 – L2 ∈ RE?
 ## b. Si L1 ⋂ L2 ∈ RE, ¿L1 o L2 ∈ RE?
 ## c. Si L1 ⋃ L2 ∈ RE, ¿L1 o L2 ∈ RE?
-# 6. Explicar (informal pero claramente) cómo sería una MT que genera la n-ésima
-fórmula booleana satisfactible, cuya sintaxis contiene variables de la forma xi, los operadores
-lógicos del conjunto {¬, , }, y paréntesis. 
+# 6. Explicar (informal pero claramente) cómo sería una MT que genera la n-ésima fórmula booleana satisfactible, cuya sintaxis contiene variables de la forma x<sub>i</sub>, los operadores lógicos del conjunto {¬, , }, y paréntesis. 
