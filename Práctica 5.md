@@ -27,7 +27,12 @@ Dado a que $T_1(n)$ es menor que $T_2(n)$, es seguro asumir que todos los lengua
 
 ## d. ¿Por qué es indistinta la cantidad de cintas de las MT que utilizamos para analizar los lenguajes, en el marco de la jerarquía temporal que definimos?
 
+La jerarquía temporal indica la categoría del tiempo de ejecución, independientemente de lo que ésta tarde. Aumentar o reducir la cantidad de cintas puede alterar el tiempo de respuesta, pero seguirá perteneciendo a la misma categoría.
 
+Por ejemplo:
+* Supongamos una MT M<sub>1</sub> con 1 cinta que resuelve un lenguaje en $T(n^2)$.
+* También hay una MT M<sub>2</sub> con K cintas que lo resuelve en $T(n)$.
+* Si bien el tiempo de M<sub>2</sub> es menor al de M<sub>1</sub>, ambas funciones son polinomiales.
 
 ## e. Probar que si L está en P, también lo está su complemento $L^C$.
 
@@ -38,18 +43,10 @@ Se supone que un lenguaje $L^C$ es aceptado por una máquina MT M' que invierte 
 Por lo tanto, como ambos lenguajes tienen el mismo tiempo de ejecución, si $L ∈ P$, su complemento también lo hará.
 
 # 2. Sea el lenguaje SMALL-SAT = {φ | φ es una fórmula booleana sin cuantificadores en la forma normal conjuntiva (o FNC), y existe una asignación de valores de verdad que la satisface en la que hay a lo sumo 3 variables con valor de verdad verdadero}. Probar que SMALL-SAT ∈ P.
-**Comentario: φ está en la forma FNC si es una conjunción de disyunciones de variables o variables negadas, como p.ej. (x1  x2)  x4  (x3  x5  x6).**
+**Comentario: φ está en la forma FNC si es una conjunción de disyunciones de variables o variables negadas, como por ej. (x1 ∨ x2) ∧ x4 ∧ (¬x3 ∨ x5 ∨ x6).**
 
-# 3. Considerando los dos lenguajes siguientes, (1) justificar por qué no estarían en P,
-(2) probar que están en NP, (3) justificar por qué sus complementos no estarían en NP:
-a) El problema del conjunto dominante de un grafo consiste en determinar si un grafo no
-dirigido tiene un conjunto dominante de vértices. Un subconjunto D de vértices de un grafo
-G es un conjunto dominante de G, si todo vértice de G fuera de D es adyacente a algún
-vértice de D. El lenguaje que representa el problema es:
-DOM-SET = {(G, K) | G es un grafo no dirigido y tiene un conjunto dominante de K
-vértices}.
-b) El problema de los grafos isomorfos consiste en determinar si dos grafos son isomorfos.
-Dos grafos son isomorfos si son idénticos salvo por la denominación de sus arcos. P.ej. el
-grafo G1 = ({1, 2, 3, 4}, {(1,2), (2,3), (3,4), (4,1)}) es isomorfo al grafo G2 = ({1, 2, 3, 4},
-{(1,2), (2,4), (4,3). (3,1)}). El lenguaje que representa el problema es:
-ISO = {(G1, G2) | G1 y G2 son grafos isomorfos}. 
+# 3. Considerando los dos lenguajes siguientes, (1) justificar por qué no estarían en P, (2) probar que están en NP, (3) justificar por qué sus complementos no estarían en NP:
+
+## a. El problema del conjunto dominante de un grafo consiste en determinar si un grafo no dirigido tiene un conjunto dominante de vértices. Un subconjunto D de vértices de un grafo G es un conjunto dominante de G, si todo vértice de G fuera de D es adyacente a algún vértice de D. El lenguaje que representa el problema es: DOM-SET = {(G, K) | G es un grafo no dirigido y tiene un conjunto dominante de K vértices}.
+
+## b. El problema de los grafos isomorfos consiste en determinar si dos grafos son isomorfos. Dos grafos son isomorfos si son idénticos salvo por la denominación de sus arcos. P.ej. el grafo G1 = ({1, 2, 3, 4}, {(1,2), (2,3), (3,4), (4,1)}) es isomorfo al grafo G2 = ({1, 2, 3, 4}, {(1,2), (2,4), (4,3). (3,1)}). El lenguaje que representa el problema es: ISO = {(G1, G2) | G1 y G2 son grafos isomorfos}.
