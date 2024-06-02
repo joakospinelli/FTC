@@ -204,3 +204,22 @@ Se buscará demostrar que esta propiedad es inválida a partir de un contra-ejem
 * Por lo tanto, $A'$ no es una tautología (*de hecho es una contradicción ☝🤓*).
 
 *// esto estaría bueno demostrarlo también x inducción y absurdo para practicar*
+
+# 5. Demostrar que cualquier tautología proposicional que esté escrita usando los conectivos ¬, ∨, ∧, → contiene alguna ocurrencia ya sea del símbolo ¬ o del símbolo →.
+
+Se intentará demostrar por inducción que cualquier fórmula que sólo contenga los conectores ∨ y ∧ puede tomar el valor F. Para esto se tomará como ejemplo una fórmula $A$.
+
+Hipótesis inductiva: para toda fórmula A que sólo contenga los conectores ∨ y ∧, con hasta N conectivos, se cumple al menos un caso en el que sea falsa.
+
+Caso base ($N = 0$):
+* $A$ es una fórmula unaria.
+* Por lo tanto, el valor de $A$ dependerá del valor de su única variable.
+* Si $p = F$, entonces $A = F$.
+
+Caso $N + 1$:
+* Una fórmula puede tener alguno de estos dos formatos (siendo B y C términos con menos de N conectivos):
+    1. $A = B ∨ C$
+    2. $A = B ∧ C$
+* Al tratarse de operaciones de conjunción y disyunción, existe al menos un caso en el que su resultado sea falso.
+
+Se pudo probar que cualquier fórmula que sólo contenga los conectores ∨ y ∧ puede tomar el valor F. Por lo tanto, estos conectores por sí solos no son suficientes para escribir una tautología, sino que debe haber al menos una ocurrencia de ¬ o →.
