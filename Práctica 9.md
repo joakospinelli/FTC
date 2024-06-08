@@ -223,3 +223,315 @@ Caso $N + 1$:
 * Al tratarse de operaciones de conjunción y disyunción, existe al menos un caso en el que su resultado sea falso.
 
 Se pudo probar que cualquier fórmula que sólo contenga los conectores ∨ y ∧ puede tomar el valor F. Por lo tanto, estos conectores por sí solos no son suficientes para escribir una tautología, sino que debe haber al menos una ocurrencia de ¬ o →.
+
+# 6.¿Es cierto que en el Cálculo de Enunciados pueden escribirse dos fbfs que tengan diferentes letras de proposición y aún así ambas fbfs sean lógicamente equivalentes?. Fundar.
+
+Dos fbf $A$ y $B$ son lógicamente equivalentes sí y sólo si tienen el mismo valor de verdad para todas sus interpretaciones posibles. Dicho de otra manera, son lógicamente equivalentes si la forma $A ↔ B$ es una tautología.
+
+Por lo tanto, la equivalencia entre dos fórmulas no depende de sus letras de proposición, sino de los resultados finales. Para que esto sea posible, puede establecerse una correspondencia entre las variables.
+
+Un ejemplo de fórmulas lógicamente equivalentes independientemente de sus variables son las tautologías, ya que todas sus interpretaciones posibles son verdaderas. Un ejemplo con letras distintas:
+* (p ∨ ¬p): todas sus interpretaciones son verdaderas independientemente del valor de $p$.
+* (q → q): es un condicional trivial, en el que al igual que el caso anterior, sus interpretaciones son siempre verdaderas independientemente del valor de $q$.
+
+Para estas dos fórmulas se cumple que $(p ∨ ¬p) ↔ (q → q)$, por lo que son lógicamente equivalentes.
+
+# 7. Para las tablas dadas a continuación, encontrar al menos dos fbf del Cálculo de Enunciados que las tenga por tablas de verdad.
+
+**Ayuda: alcanza con usar p, q, ¬, ∧, ∨.**
+
+## a. 
+| p | q | f |
+| - | - | - |
+| V | V | V |
+| V | F | V |
+| F | V | V |
+| F | F | V |
+
+1. (p ∨ ¬p)
+2. (q ∨ ¬q)
+
+## b.
+| p | q | f |
+| - | - | - |
+| V | V | V |
+| V | F | F |
+| F | V | V |
+| F | F | F |
+
+1. q
+2. (p ∧ ¬p) ∨ q
+
+## c.
+| p | q | f |
+| - | - | - |
+| V | V | V |
+| V | F | V |
+| F | V | F |
+| F | F | F |
+
+1. p
+2. (q ∧ ¬q) ∨ p
+
+# 8. Determinar cuáles de las siguientes fbfs son lógicamente implicadas por la fbf (A ∧ B). Fundamentar.
+
+Una fórmula $X$ implica lógicamente a otra fórmula $Y$ si la forma $X → Y$ es una tautología.
+
+Se intentará demostrar que (A ∧ B) implica lógicamente a las siguientes fórmulas:
+
+## i. A
+
+| A | B | A ∧ B | (A ∧ B) → A |
+| - | - | ----- | ----------- |
+| V | V |   V   | V |
+| V | F |   F   | V |
+| F | V |   F   | V |
+| F | F |   F   | V |
+
+(A ∧ B) → A es una tautología, por lo que se cumple (A ∧ B) ⇒ A.
+
+## ii. B
+
+| A | B | A ∧ B | (A ∧ B) → B |
+| - | - | ----- | ----------- |
+| V | V |   V   | V |
+| V | F |   F   | V |
+| F | V |   F   | V |
+| F | F |   F   | V |
+
+(A ∧ B) → B es una tautología, por lo que se cumple (A ∧ B) ⇒ B.
+
+## iii. A ∨ B
+
+| A | B | A ∧ B | A ∨ B | (A ∧ B) → (A ∨ B) |
+| - | - | ----- | ----- | ----------------- |
+| V | V |   V   | V | V |
+| V | F |   F   | V | V |
+| F | V |   F   | V | V |
+| F | F |   F   | F | V |
+
+(A ∧ B) → (A ∨ B) es una tautología, por lo que se cumple (A ∧ B) ⇒ A ∨ B.
+
+## iv. ¬A ∨ B
+
+| A | B | A ∧ B | ¬A ∨ B | (A ∧ B) → (¬A ∨ B) |
+| - | - | ----- | ----- | ------------------- |
+| V | V |   V   | V | V |
+| V | F |   F   | F | V |
+| F | V |   F   | V | V |
+| F | F |   F   | V | V |
+
+(A ∧ B) → (¬A ∨ B) es una tautología, por lo que se cumple (A ∧ B) ⇒ ¬A ∨ B.
+
+## v. ¬B → A
+
+| A | B | A ∧ B | ¬B → A | (A ∧ B) → (¬B → A) |
+| - | - | ----- | ----- | ------------------- |
+| V | V |   V   | V | V |
+| V | F |   F   | V | V |
+| F | V |   F   | V | V |
+| F | F |   F   | F | V |
+
+(A ∧ B) → (¬B → A) es una tautología, por lo que se cumple (A ∧ B) ⇒ ¬B → A.
+
+## vi. A ↔ B
+
+| A | B | A ∧ B | A ↔ B | (A ∧ B) → (A ↔ B) |
+| - | - | ----- | ----- | ----------------- |
+| V | V |   V   | V | V |
+| V | F |   F   | F | V |
+| F | V |   F   | F | V |
+| F | F |   F   | V | V |
+
+(A ∧ B) → (A ↔ B) es una tautología, por lo que se cumple (A ∧ B) ⇒ A ↔ B.
+
+## vii. A → B
+
+| A | B | A ∧ B | A → B | (A ∧ B) → (A → B) |
+| - | - | ----- | ----- | ----------------- |
+| V | V |   V   | V | V |
+| V | F |   F   | F | V |
+| F | V |   F   | V | V |
+| F | F |   F   | V | V |
+
+(A ∧ B) → (A → B) es una tautología, por lo que se cumple (A ∧ B) ⇒ A → B.
+
+## viii. ¬B → ¬A
+
+| A | B | A ∧ B | ¬B → ¬A | (A ∧ B) → (¬B → ¬A) |
+| - | - | ----- | ----- | ----------------- |
+| V | V |   V   | V | V |
+| V | F |   F   | F | V |
+| F | V |   F   | V | V |
+| F | F |   F   | V | V |
+
+(A ∧ B) → (¬B → ¬A) es una tautología, por lo que se cumple (A ∧ B) ⇒ ¬B → ¬A.
+
+# ix. B → ¬A
+
+| A | B | A ∧ B | B → ¬A | (A ∧ B) → (B → ¬A) |
+| - | - | ----- | ----- | ----------------- |
+| V | V |   V   | F | F |
+| V | F |   F   | V | V |
+| F | V |   F   | V | V |
+| F | F |   F   | V | V |
+
+(A ∧ B) → (B → ¬A) no es una tautología, ya que no se encontró una asignación de valores en la que no es verdadera. Por lo tanto, no se cumple (A ∧ B) ⇒ B → ¬A.
+
+# 9. Sea la relación ≤ tal que dadas fbfs A , B se cumple que A ≤ B si y sólo si A → B es una tautología. Dadas las fbfs: p, p → q, ¬p, p ∧ ¬p, r ∨ ¬r organizarlas bajo la relación ≤. Representar gráficamente.
+
+*// no termino de entender cómo organizar las relaciones así que lo voy a dejar*
+## p
+
+### p → q
+
+### ¬p
+
+### p ∧ ¬p
+
+### r ∨ ¬r
+
+
+## p → q
+
+### p
+
+### ¬p
+
+### p ∧ ¬p
+
+### r ∨ ¬r
+
+
+## p ∧ ¬p
+
+### p
+
+### p → q
+
+### ¬p
+
+### r ∨ ¬r
+
+
+## r ∨ ¬r
+
+### p
+
+### p → q
+
+### ¬p
+
+### p ∧ ¬p
+
+# 10. Sea A una fbf donde aparecen sólo los conectivos ∧, ¬. Sea A' la fbf que se obtiene a partir de A reemplazando cada ∧ por ∨ y cada letra de proposición por su negación (o sea, cada p por ¬p, cada q por ¬q, etc.). ¿Es cierto que A' es lógicamente equivalente a ¬A ? Fundamentar.
+
+A partir de una fbf $A$, formada sólo por los conectivos { ∧, ¬ }, se obtiene otra fbf $A'$ que es igual a $A$, pero reemplazando ∧ por ∨ y negando cada preposición.
+
+Se busca demostrar que $A'$ y $¬A$ son lógicamente equivalentes.
+
+Desde la hipótesis podemos sacar algunas conclusiones:
+* $¬A$ se obtiene negando los resultados de $A$.
+* $A'$ se obtiene a partir de $A$ realizando los siguientes cambios:
+    * Los conectivos ∧ se reemplazan por ∨
+    * Cada preposición $p$ se reemplaza por $¬p$.
+
+Podemos encontrar ciertas similitudes entre las definiciones de $¬A$ y $A'$ con las leyes de De Morgan, la cual implica que el resultado de la negación de una fbf es igual a esa misma fbf, pero intercambiando sus conectivos ∧ por ∨ (y viceversa) y negando todas las preposiciones. Formalmente se define como:
+* ¬(p ∨ q) = ¬p ∧ ¬q
+* ¬(p ∧ q) = ¬p ∨ ¬q
+
+A partir de esto podemos considerar que $A'$ se obtiene aplicando las leyes de De Morgan en $A$, por lo que $¬A$ y $A'$ son lógicamente equivalentes.
+
+## b. Ejemplificar con algunos ejemplos concretos escritos en lenguaje natural.
+
+* p: *"mañana llueve"*.
+* q: *"mañana hay sol"*.
+* $A$: (p ∧ ¬q): *"Mañana llueve y no hay sol"*.
+* $A'$: (¬p ∨ q): *"Mañana no llueve o hay sol"*.
+
+| p | q | ¬p | ¬q | p ∧ ¬q | ¬A: ¬(p ∧ ¬q) | A': (¬p ∨ q) | ¬A ↔ A' |
+| - | - | -- | -- | ------ | ------------- | ------------ | ------- |
+| V | V | F | F | F | V | V | V |
+| V | F | F | V | V | F | F | V | 
+| F | V | V | F | F | V | V | V |
+| F | F | V | V | F | V | V | V |
+
+Como podemos ver, se cumple $¬A ↔ A'$ para todos sus valores de verdad, por lo que son lógicamente equivalentes.
+
+# 11. Sea # el operador binario definido como p#q = def (p ∧ ¬q) ∨ (¬p ∧ q). 
+
+## a. Probar que # es asociativo, es decir, x#(y#z) es lógicamente equivalente a (x#y)#z.
+
+Se quiere demostrar que x#(y#z) ↔ (x#y)#z es una tautología.
+
+
+
+| x | y | z | (y#z) | (x#y) | x#(y#z) | (x#y)#z | x#(y#z) ↔ (x#y)#z |
+| - | - | - | ----- | ----- | ------- | ------- | ----------------- |
+| V | V | V | F | F | V | V | V |
+| V | V | F | V | F | F | F | V |
+| V | F | V | V | V | F | F | V |
+| V | F | F | F | V | V | V | V |
+| F | V | V | F | V | F | F | V |
+| F | V | F | V | V | V | V | V |
+| F | F | V | V | F | V | V | V |
+| F | F | F | F | F | F | F | V |
+
+Se cumple x#(y#z) ↔ (x#y)#z para todos sus valores de verdad, por lo que ambas fbf son lógicamente equivalentes. Debido a esto, la operación # es asociativa.
+
+## b. Probar que # es conmutativo, es decir, y#z es lógicamente equivalente a z#y.
+
+| y | z | y#z | z#y | z#y ↔ y#z |
+| - | - | --- | --- | --------- |
+| V | V | F | F | V |
+| V | F | V | V | V |
+| F | V | V | V | V |
+| F | F | F | F | V |
+
+Se cumple z#y ↔ y#z para todos sus valores de verdad, por lo que ambas fbf son lógicamente equivalentes. Debido a esto, la operación # es conmutativa.
+
+# 12. Demostrar que las siguientes fórmulas son lógicamente equivalentes.
+
+## a. (p → q) es lógicamente equivalente a (¬p ∨ q)
+
+| p | q | ¬p | p → q | ¬p ∨ q | (p → q) ↔ (¬p ∨ q) |
+| - | - | -- | ----- | ------ | ---------------- |
+| V | V | F | V | V | V |
+| V | F | F | F | F | V |
+| F | V | V | V | V | V |
+| F | F | V | V | V | V |
+
+Como $(p → q) ↔ (¬p ∨ q)$ es una tautología, se cumple que $(p → q)$ y $(¬p ∨ q)$ sean lógicamente equivalentes.
+
+## b. (p ↔ q) es lógicamente equivalente a ((p → q) ∧ (q → p))
+
+| p | q | p ↔ q | p → q | q → p | (p → q) ∧ (q → p) | (p ↔ q) ↔ ((p → q) ∧ (q → p))
+| - | - | ----- | ----- | ----- | ----------------- | - | 
+| V | V | V | V | V | V | V |
+| V | F | F | F | V | F | V |
+| F | V | F | V | F | F | V |
+| F | F | V | V | V | V | V |
+
+Como $(p ↔ q) ↔ ((p → q) ∧ (q → p))$ es una tautología, se cumple que $(p ↔ q)$ y $((p → q) ∧ (q → p))$ sean lógicamente equivalentes.
+
+## c. (¬(p ∧ q)) es lógicamente equivalente a (¬p ∨ ¬q)
+
+| p | q | p ∧ q | ¬(p ∧ q) | ¬p | ¬q | (¬p ∨ ¬q) | (¬(p ∧ q)) ↔ (¬p ∨ ¬q) |
+| - | - | ----- | -------- | -- | -- | --------- | ----------------------- |
+| V | V | V | F | F | F | F | V |
+| V | F | F | V | F | V | V | V |
+| F | V | F | V | V | F | V | V |
+| F | F | F | V | V | V | V | V |
+
+Como $(¬(p ∧ q)) ↔ (¬p ∨ ¬q)$ es una tautología, se cumple que $(¬(p ∧ q))$ y $(¬p ∨ ¬q)$ sean lógicamente equivalentes.
+
+## d. (¬(p ∨ q)) es lógicamente equivalente a (¬p ∧ ¬q)
+
+| p | q | p ∨ q | ¬(p ∨ q) | ¬p | ¬q | ¬p ∧ ¬q | (¬(p ∨ q)) ↔ (¬p ∧ ¬q) |
+| - | - | ----- | -------- | -- | -- | ------- | ---------------------- |
+| V | V | V | F | F | F | F | V |
+| V | F | V | F | F | V | F | V |
+| F | V | V | F | V | F | F | V |
+| F | F | F | V | V | V | V | V |
+
+Como $(¬(p ∨ q)) ↔ (¬p ∧ ¬q)$ es una tautología, se cumple que $(¬(p ∨ q))$ y $(¬p ∧ ¬q)$ sean lógicamente equivalentes.
