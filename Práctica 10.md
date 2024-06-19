@@ -76,4 +76,35 @@ En este caso sí es posible, ya que se considera la posibilidad de que Γ<sub>0<
 
 ## a. ¿Es cierto que Γ |-<sub>L</sub> (C → B)? Fundar.
 
-## b. ¿Es cierto que Γ |-<sub>L</sub> (A)? Fundar.
+Primero se utilizará el meta-teorema de la deducción para igualar Γ ∪ {A, B} a Γ.
+
+Caso 1:
+1. Γ ∪ {A, B} |-<sub>L</sub> C
+2. Γ ∪ { A } |-<sub>L</sub> (B → C)
+3. Γ |-<sub>L</sub> (A → (B → C))
+
+Caso 2:
+1. Γ ∪ {A, B} |-<sub>L</sub> C
+2. Γ ∪ { B } |-<sub>L</sub> (A → C)
+3. Γ |-<sub>L</sub> (B → (A → C))
+
+Γ = { (A → (B → C)), (B → (A → C)), A } *// A ya lo sabía por el enunciado que dice Γ |-<sub>L</sub> A*
+
+Se quiere demostrar Γ |-<sub>L</sub> (C → B). Para esto se buscará un contraejemplo en el que la conclusión sea falsa pero las premisas sean verdaderas.
+
+Para que la conclusión (C → B) sea falsa, debe darse $C = V$ y $B = F$.
+
+De esta manera las premisas se resuelven como:
+* (A → (B → C)) = (A → (F → V)) = (A → V) = $V$
+* (B → (A → C)) = (F → (A → V)) = (F → V) = $V$
+* A = $A$.
+
+Dado el caso $A = V, $B = F, C = V$, todas las premisas serían verdaderas, a pesar de que la conclusión sea falsa. Por lo tanto, la argumentación es inválida.
+
+## b. ¿Es cierto que |-<sub>L</sub> (A)? Fundar.
+
+Para que A sea un teorema, debe ser una tautología.
+
+A puede ser una FBF cualquiera, por lo que podría no ser una tautología.
+
+Por lo tanto, A no es un teorema.
