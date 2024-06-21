@@ -199,6 +199,75 @@ $(∀x) ((J(x,ARG) ∧ V(x,EUR) ∧ ¬V(x,ENG)) → M(x))$
 
 ## a. Ningún dragón que viva en un zoológico es feliz. Cualquier animal que encuentre gente amable es feliz. Las personas que visitan los zoológicos son amables. Los animales que viven en zoológicos encuentran personas que visitan zoológicos.
 
+1. *"Para todo "x" se cumple que, si "x" es un dragón y vive en un zoológico, entonces no es feliz.*
+    * (También podría leerse como *"No existe un objeto "x" que sea un dragón, viva en un zoológico y sea feliz*).
+
+2. *Para todo "x" se cumple que, si "x" es un animal y exista al menos un objeto "y" que es una persona amable y se encuentran, entonces es feliz.*
+
+3. *Para todo "x" se cumple que, si "x" es una persona y visita un zoológico, entonces es amable.*
+
+4. *Para todo "x" se cumple que, si "x" es un animal y vive en un zoológico, entonces existe al menos un objeto "y" que sea una persona amable y se encontrarán.*
+
+Predicados:
+* $D(x)$: "x" es un dragón.
+* $P(x)$: "x" es una persona.
+* $A(x)$: "x" es un animal.
+* $Z(x)$: "x" vive en un zoológico.
+* $F(x)$: "x" es feliz.
+* $M(x)$: "x" es amable.
+* $V(x)$: "x" visita zoológicos.
+* $E(x,y)$: "x" encuentra a "y".
+
+Variables:
+* x: representa a una persona cualquiera.
+* d: representa a un dragón cualquiera.
+* a: representa a un animal cualquiera.
+
+1.
+    1. $(∀d) ((D(d) ∧ Z(d)) → ¬F(d))$
+    1. $¬(((∃d) (D(d) ∧ Z(d) ∧ F(d))))$
+2. $(∀a) ((A(a) ∧ (∃x)(P(x) ∧ M(x) ∧ E(a,x))) → F(a))$
+3. $(∀x) ((P(x) ∧ V(x)) → M(x))$
+4. $(∀A) ((A(a) ∧ Z(x)) → (∃x) (P(x) ∧ M(x) ∧ E(x,a)))$
+
 ## b. Todo peluquero afeita a todo aquel que no se afeita a sí mismo. Ningún peluquero afeita a alguien que se afeite a sí mismo.
 
+1. *Para todo "x" se cumple que, si "x" es un peluquero, entonces existe un objeto "y" que es una persona, no se afeita a sí misma y es afeitada por "x".*
+2. *No existe un objeto "x" que sea un peluquero y exista un objeto "y" que sea una persona que se afeita a sí misma y sea afeitada por "x".*
+
+Predicados:
+* $P(x)$: "x" es un peluquero.
+* $C(x)$: "x" es un cliente.
+* $A(x,y)$: "x" afeita a "y".
+
+Variables:
+* p: representa a un peluquero cualquiera.
+* x: representa a un cliente cualquiera.
+
+1. $(∀p) (P(x) → (∀x) (C(x) ∧ ¬A(x,x) ∧ A(p,x)))$
+2. $¬((∃p) (P(p) ∧ A(p,x) ∧ (∃x)(C(x) ∧ A(x,x) ∧ A(p,x))))$
+
 ## c. Si alguien hace algo bueno, ese alguien es bueno; del mismo modo, si alguien hace algo malo, es malo. Sebastián ayuda a su madre y también miente algunas veces. Mentir es malo y ayudar es bueno.
+
+1. *Para todo "x", si "x" realiza algo bueno, entonces es bueno.*
+2. *Para todo "x", si "x" realiza algo malo, entonces es malo.*
+3. *"x" realiza las acciones "y" y "z"*.
+4. *"y" es algo bueno y "z" es algo malo.*
+
+Predicados:
+* $B(x)$: "x" es bueno.
+* $R(x,y)$: "x" realiza la acción "y".
+
+Constantes:
+* SEB: representa a la persona Sebastián.
+* MNT: representa la acción de mentir.
+* AYD: representa la acción de ayudar.
+
+Variables:
+* x: representa a una persona cualquiera.
+* b: representa a una acción cualquiera.
+
+1. $(∀x) ((B(y) ∧ R(x,y)) → B(x))$
+2. $(∀x) ((¬B(y) ∧ R(x,y)) → ¬B(x))$
+3. $R(SEB,AYD) ∧ R(SEB,MNT)$
+4. $B(AYD) ∧ ¬B(MNT)$
