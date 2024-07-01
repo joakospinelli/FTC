@@ -21,11 +21,11 @@ En base a eso, se pueden dar dos casos según el valor de $x$:
 
 ## a. Si el programa S terminó en un estado final que no satisface q, entonces significa que empezó en un estado inicial que no satisface p.
 
-Por definición, si la terna {$p$} S {$q$} es válida es porque termina en un estado en el cual se satisface $q$. Por lo tanto, si $q$ no se cumple es porque no se definió un estado inicial en el cual se rompa $p$.
+Por definición, si la terna { $p$ } S { $q$ } es válida es porque termina en un estado en el cual se satisface $q$. Por lo tanto, si $q$ no se cumple es porque no se definió un estado inicial en el cual se rompa $p$.
 
 ## b. Si el programa S terminó en un estado final que satisface q, entonces significa que empezó en un estado inicial que satisface p.
 
-La terna {$p$} S {$q$} implica que, dado un estado inicial $p$ se llega a un resultado final $q$. Sin embargo, esto no garantiza que sea el único camino posible para llegar a dicho estado final.
+La terna { $p$ } S { $q$ } implica que, dado un estado inicial $p$ se llega a un resultado final $q$. Sin embargo, esto no garantiza que sea el único camino posible para llegar a dicho estado final.
 
 Por lo tanto, a partir de un estado final $q$ no puede determinarse el valor del estado inicial $p$.
 
@@ -37,12 +37,15 @@ Por lo tanto, a partir de un estado final $q$ no puede determinarse el valor del
 
 ## b. {?} x := y {x = y}
 
-{true} x := y {x = y}
+{y = y} x := y {x = y}
 
 # 4. Especificar un programa que a partir de un estado inicial en el que x > 0, termine en un estado final en el que el valor de la variable y sea el doble del valor inicial de x.
 
 *// Ayuda: la especificación (x > 0, y = 2.x) NO es correcta.*
 
+La especificación $x > 0, y = 2*x$ no es válida ya que no tiene en cuenta el valor inicial de $x$. Para esto debe crearse una nueva variable $X$ en la que se almacene el valor inicial de la variable.
+
+{x > 0} X = x; y = 2*X {y = 2*X}
 
 # 5. Se cuenta con un programa que calcula en una variable prod el producto de dos números enteros x e y mayores o iguales que cero, sumando y veces el valor de x. Una terna de Hoare que expresa esto es la siguiente:
 ```c
