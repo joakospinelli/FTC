@@ -253,13 +253,16 @@ Por lo tanto, la FBF es lógicamente válida.
 
 Se buscará de mostrar que $∀x (A(x) ∨ B(x)) → ((∀xA(x)) ∨ (∀xB(x)))$ es lógicamente válida.
 
-Debido a la distribución del cuantificador, se cumple para todas las valoraciones que $∀x (A(x) ∨ B(x)) = ((∀xA(x)) ∨ (∀xB(x)))$.
+Para esto se buscará un contraejemplo. Dada una interpretación I en la que:
+* U: Universo de los números naturales.
+* I(A): $x$ es un número par.
+* I(B): $x$ es un número impar.
 
-Según la tabla de verdad de la implicación, tanto $F → F$ como $V → V$ son verdaderas.
+1. El término $∀x (A(x) ∨ B(x))$ es válido. Podría leerse como "Todos los números naturales son pares o impares".
+2. El término $((∀xA(x)) ∨ (∀xB(x)))$ no es válido. Podría leerse como "Todos los números naturales son pares o todos son impares".
+3. Al ser una implicación, el resultado queda V → F que en la tabla de verdad es falso.
 
-Por lo tanto, la FBF es lógicamente válida.
-
-*// creo que está mal pero no lo voy a arreglar 🐊*
+Se encontró una interpretación en la que la FBF es falsa, por lo que no es lógicamente válida.
 
 # 7. Sea A una FBF de un lenguaje de primer orden e I una interpretación para tal lenguaje, demostrar que A es verdadera en I si y sólo si ¬A es falsa en I.
 
